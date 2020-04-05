@@ -528,8 +528,8 @@ int main()
     tp28.test(FIRST_FIT_DECREASING);
     std::cout << "Next Fit: ";
     tp28.test(NEXT_FIT);
-    //std::cout << "Next Fit: ";
-    //tp28.test(RIGHT_FIT);
+    std::cout << "Next Fit: ";
+    tp28.test(RIGHT_FIT);
 
     std::cout << "Exercise 30_1" << std::endl;
     int bin30_1[] = { 0, 3, 5, 2, 4 };
