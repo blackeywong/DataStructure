@@ -50,11 +50,10 @@ void firstFitPack(int* objectSize, int numberOfObjects, int binCapacity);
 void firstFitPack2(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 25
 void firstFitPack3(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 26
 void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 28
-void worstFitPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 28
-void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 28
-void lastFitPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 30
+void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 29
+void rightFitPack(int* objectSize, int numberOfObjects, int binCapacity);//Excecise 30
 
-enum PACK_METHOD { FIRST_FIT, FIRST_FIT2, FIRST_FIT_DECREASING, WORST_FIT,  NEXT_FIT, LAST_FIT};
+enum PACK_METHOD { FIRST_FIT, FIRST_FIT2, FIRST_FIT_DECREASING, WORST_FIT,  NEXT_FIT, RIGHT_FIT};
 
 
 class TestPacking {
@@ -78,4 +77,21 @@ private:
 //First Fit : 10000000 Time cost : 172.126
 //First Fit2 : 10000000 Time cost : 176.43
 
+//Exercise 28
+//Worst Fit : 1000 Time cost : 0.017
+//First Fit : 1000 Time cost : 0.006
+//First Fit Decreasing : 1000 Time cost : 0.006
+//Next Fit : 1000 Time cost : 0.006
+//Worst Fit : 10000 Time cost : 0.197
+//First Fit : 10000 Time cost : 0.061
+//First Fit Decreasing : 10000 Time cost : 0.089
+//Next Fit : 10000 Time cost : 0.084
+//Worst Fit : 100000 Time cost : 2.74
+//First Fit : 100000 Time cost : 0.857
+//First Fit Decreasing : 100000 Time cost : 1.004
+//Next Fit : 100000 Time cost : 0.946
+//Worst Fit : 1000000 Time cost : 31.005
+//First Fit : 1000000 Time cost : 7.886
+//First Fit Decreasing : 1000000 Time cost : 10.97
+//Next Fit : 1000000 Time cost : 9.731
 #endif

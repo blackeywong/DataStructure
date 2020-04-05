@@ -507,12 +507,12 @@ int main()
     int count28_2_2 = sizeof(bin28_2_2) / sizeof(ItemNode);
     packItems(bin28_2_2, count28_2_2, 3, 10);
 
-    std::cout << "Exercise 28_3_1 nextFitPack" << std::endl;
+    std::cout << "Exercise 29_1 nextFitPack" << std::endl;
     int bin28_3_1[] = { 0, 3, 5, 2, 4 };
     int count28_3_1 = sizeof(bin28_3_1) / sizeof(int) - 1;
     nextFitPack(bin28_3_1, count28_3_1, 7);
 
-    std::cout << "Exercise 28_3_2 nextFitPack" << std::endl;
+    std::cout << "Exercise 29_2 nextFitPack" << std::endl;
     int bin28_3_2[] = { 0, 6, 1, 4, 4, 5 };
     int count28_3_2 = sizeof(bin28_3_2) / sizeof(int) - 1;
     nextFitPack(bin28_3_2, count28_3_2, 10);
@@ -528,5 +528,17 @@ int main()
     tp28.test(FIRST_FIT_DECREASING);
     std::cout << "Next Fit: ";
     tp28.test(NEXT_FIT);
+    //std::cout << "Next Fit: ";
+    //tp28.test(RIGHT_FIT);
+
+    std::cout << "Exercise 30_1" << std::endl;
+    int bin30_1[] = { 0, 3, 5, 2, 4 };
+    int count30_1 = sizeof(bin30_1) / sizeof(int) - 1;
+    rightFitPack(bin30_1, count30_1, 7);
+
+    std::cout << "Exercise 30_2" << std::endl;
+    int bin30_2[] = { 0, 6, 1, 4, 4, 5 };
+    int count30_2 = sizeof(bin30_2) / sizeof(int) - 1;
+    rightFitPack(bin30_2, count30_2, 10);
 }
 

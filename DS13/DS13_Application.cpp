@@ -53,7 +53,13 @@ void firstFitPack2(int* objectSize, int numberOfObjects, int binCapacity) {
 	int rightMost = 1;
 	int binToUse = 1;
 	for (int i = 1; i <= n; ++i) {
-		int child = winTree.getCommonAncestor(1, rightMost, true);
+		int child;
+		if (rightMost == 1) {
+			child = winTree.getParentForExt(1);
+		}
+		else {
+			child = winTree.getCommonAncestor(1, rightMost, true);
+		}
 		if (bin[winTree.winner(child)].unusedCapacity < objectSize[i]) {
 			++rightMost;
 			binToUse = rightMost;
@@ -76,6 +82,9 @@ void firstFitPack2(int* objectSize, int numberOfObjects, int binCapacity) {
 			else {
 				binToUse = winTree.winner(child / 2);
 			}
+		}
+		if (rightMost < binToUse) {
+			rightMost = binToUse;
 		}
 
 		//std::cout << "Pack object " << i << " in bin " << binToUse << std::endl;
@@ -142,7 +151,13 @@ void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacit
 	int rightMost = 1;
 	int binToUse = 1;
 	for (int i = 1; i <= n; ++i) {
-		int child = winTree.getCommonAncestor(1, rightMost, true);
+		int child;
+		if (rightMost == 1) {
+			child = winTree.getParentForExt(1);
+		}
+		else {
+			child = winTree.getCommonAncestor(1, rightMost, true);
+		}
 		if (bin[winTree.winner(child)].unusedCapacity < objectSize[i]) {
 			++rightMost;
 			binToUse = rightMost;
@@ -166,6 +181,9 @@ void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacit
 				binToUse = winTree.winner(child / 2);
 			}
 		}
+		if (rightMost < binToUse) {
+			rightMost = binToUse;
+		}
 
 		//std::cout << "Pack object " << i << " in bin " << binToUse << std::endl;
 		bin[binToUse].unusedCapacity -= objectSize[i];
@@ -174,7 +192,7 @@ void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacit
 	}
 }
 
-//Exercise 28
+//Exercise 29
 void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
 	int n = numberOfObjects;
 
@@ -184,7 +202,7 @@ void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
 	}
 	CompleteWinnerTree<BinType> winTree(bin, n, false);
 
-	std::cout << "Pack object 1 in bin 1" << std::endl;
+	//std::cout << "Pack object 1 in bin 1" << std::endl;
 	bin[1].unusedCapacity -= objectSize[1];
 	winTree.rePlay(1);
 
@@ -250,14 +268,14 @@ void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
 			rightMost = binToUse;
 		}
 
-		std::cout << "Pack object " << i << " in bin " << binToUse << std::endl;
+		//std::cout << "Pack object " << i << " in bin " << binToUse << std::endl;
 		bin[binToUse].unusedCapacity -= objectSize[i];
 		winTree.rePlay(binToUse);
 	}
 }
 
 //Exercise 30
-void lastFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
+void rightFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
 	int n = numberOfObjects;
 
 	BinType* bin = new BinType[n + 1];
@@ -269,29 +287,44 @@ void lastFitPack(int* objectSize, int numberOfObjects, int binCapacity) {
 	int rightMost = 1;
 	int binToUse = 1;
 	for (int i = 1; i <= n; ++i) {
-		int child = winTree.getCommonAncestor(1, rightMost, true);
+		int child;
+		if (rightMost == 1) {
+			child = winTree.getParentForExt(1);
+		}
+		else {
+			child = winTree.getCommonAncestor(1, rightMost, true);
+		}
 		if (bin[winTree.winner(child)].unusedCapacity < objectSize[i]) {
 			++rightMost;
 			binToUse = rightMost;
 		}
 		else {
+			child *= 2;
 			while (child < n) {
+				if (child + 1 < n - 1)
+					++child;
 				int winner = winTree.winner(child);
 				if (bin[winner].unusedCapacity < objectSize[i]) {
-					++child;
+					--child;
 				}
 				child *= 2;
 			}
 			child /= 2;
 			if (child < n) {
 				binToUse = winTree.winner(child);
-				if (binToUse > 1 && bin[binToUse - 1].unusedCapacity >= objectSize[i]) {
+				if (rightMost > 1 && binToUse + 1 <= rightMost && bin[binToUse + 1].unusedCapacity >= objectSize[i]) {
+					++binToUse;
+				}
+				else if (binToUse > 1 && bin[binToUse - 1].unusedCapacity >= objectSize[i]) {
 					--binToUse;
 				}
 			}
 			else {
 				binToUse = winTree.winner(child / 2);
 			}
+		}
+		if (rightMost < binToUse) {
+			rightMost = binToUse;
 		}
 
 		std::cout << "Pack object " << i << " in bin " << binToUse << std::endl;
@@ -337,7 +370,7 @@ void TestPacking::test(PACK_METHOD method) {
 	case FIRST_FIT_DECREASING:		firstFitDecreasingPack(objects, size, 100); break;
 	case WORST_FIT:					packItems(items, size, size * 2 / 3, 100); break;
 	case NEXT_FIT:					nextFitPack(objects, size, 100); break;
-	case LAST_FIT:					lastFitPack(objects, size, 100); break;
+	case RIGHT_FIT:					rightFitPack(objects, size, 100); break;
 	}
 	finish = clock();
 	std::cout << size << " Time cost: " << (double)(finish - start) / CLK_TCK << std::endl;

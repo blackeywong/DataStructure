@@ -7,11 +7,17 @@
 #include "WinnerTree.h"
 //#include "DS13_Applications.h"
 
+void firstFitPack2(int* objectSize, int numberOfObjects, int binCapacity);
+void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacity);
 void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity);
+void rightFitPack(int* objectSize, int numberOfObjects, int binCapacity);
 
 template<class T>
 class CompleteWinnerTree: public WinnerTree<T> {
+	friend void firstFitPack2(int* objectSize, int numberOfObjects, int binCapacity);
+	friend void firstFitDecreasingPack(int* objectSize, int numberOfObjects, int binCapacity);
 	friend void nextFitPack(int* objectSize, int numberOfObjects, int binCapacity);
+	friend void rightFitPack(int* objectSize, int numberOfObjects, int binCapacity);
 public:
 	CompleteWinnerTree() = default;
 	CompleteWinnerTree(T* thePlayer, int theNumberOfPlayers, bool theSmallerWin = true):smallerWin(theSmallerWin) { init();  initialize(thePlayer, theNumberOfPlayers); }
@@ -90,6 +96,8 @@ int CompleteWinnerTree<T>::getCommonAncestor(int p1, int p2, bool isExt) {
 
 	while (p1 != p2) {
 		p1 /= 2;
+		if (p1 == p2)
+			return p1;
 		p2 /= 2;
 	}
 
