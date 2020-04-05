@@ -1,0 +1,1000 @@
+.nr 1 4
+.oh he bstract ata ype 
+.eh tacks
+.
+
+.
+. 2
+   
+.
+.sp
+ fstackf is an ordered list
+of elements.  ne end of this list is designated the fbottomf
+and the other is called the ftopf.   stack with four elements
+is shown in stacka. ew elements are always added at the top of the
+stack.  uppose we wish to add the element  to the stack
+of stacka.  his element will have to be placed on top
+of the element  giving us the configuration of
+stackb.  eletions from a stack also take place from
+the top only.  ence if we are to delete an element from the stack
+of stackb, it will be the element .  ollowing
+the deletion, the configuration of stacka
+results.  f three successive deletions are performed
+on the stack of stackb, the stack of stackc
+results.
+.
+.hl
+.
+expand;
+l l l.
+ 	top	 
+top		 
+		 
+		top
+bottom	bottom	bottom
+.sp
+.
+c c c.
+a	b	c
+.
+.sp
+.hl
+fstack:f tack configurations
+.
+.pp
+rom the preceding discussion, we see that a stack
+is a  last in first out list.  ists of this type appear
+frequently in computing.
+he  stack is specified in  n1.1.
+.
+.hl
+ff ftackf
+.br
+
+finstancesf
+.br
+.
+ordered list of elements; one end is called the fbottomf;
+the other is the ftopf;
+.
+foperationsf
+.
+reate: reate an empty stack;
+.br
+smpty: eturn 0 if stack is empty, return 1 otherwise;
+.br
+sull: eturn 1 if stack is full, return 0 otherwise;
+.br
+opx: keturn top element of stack in x;
+.br
+hnureturn 0 if the operation fails, return 1 otherwise
+.br
+ddx: kdd element fxf to the stack;
+.br
+hnureturn 0 if the operation fails, return 1 otherwise
+.br
+eletex: kelete top element from stack and return it in fxf;
+.br
+hnureturn 0 if the operation fails, return 1 otherwise
+.
+.
+
+.br
+.hl
+f n1.1:f he abstract data type stack
+.
+.oh ormulaased epresentation
+. 2
+ 
+.
+.sp
+ince a stack is a linear list with the restriction that additions
+and deletions take place at the same end, we may use the linear list
+representation of ection 2.3.  he top element of the stack
+is stored in elementlength1 and the bottom element
+in element0.
+he class ftackf defined in stackclass is a derived
+class of inearist rogram 2.1.
+he functions fddf and feletef have been implemented by overloading
+the binary operators  and , respectively. he expression sx
+will add element x to the top of stack s while the expression
+sx will delete the top element from the stack s and return the
+deleted element in variable x.  oth functions return 0 if they are
+unable to perform the operation and 1 if the operation is actually performed.
+.
+.hl
+.nf
+.ft  
+templateclass type
+class tack : protected inearist type 
+  objects
+public:
+   tackint axtackize  10
+     : inearisttype axtackize 
+   int smpty return inearisttype::smpty;
+   int sull
+      return ength  axize;
+   int optype x
+      return indength, x;
+   int operator type x  add x to stack
+      return nsertength, x;
+   int operator type x  delete x from stack
+      return eleteength, x;
+;
+.ft 
+.fi
+.hl
+fstackclass:f ormulabased class ftackf
+.
+.uh fficiency f tack
+.br
+he complexity of each of the stack operations is seen to be
+1.  otice that
+by deriving tack from inearist, we have reduced the effort needed
+to code the class tack.  lso, we have significantly improved our chances
+of obtaining a correct implementation as the methods for inearist
+have already been tested and are known to be correct.  nfortunately, this
+simplification has come at the cost of increased run time.  or example,
+to add an element to a stack, we first determine its ength and
+then invoke nsert which checks if the insert is in range.  ollowing
+this, a fforf loop overhead is paid to perform zero element moves.
+e can eliminate these overheads by tailoring the code to the
+class tack.  his can be done by either starting afresh or by
+accessing the protected members of inearist to customize our
+codes.
+.pp
+nother potential difficulty is that the derived class tack is subject
+to all of the limitations of the class inearist.  or instance,
+the operations fcoutf and  need to be defined
+on members of the data type type as these are used by the inearist
+class members rint and earch.
+.uh  ustomized efinition of tack
+.br
+custom gives the class definition for tack when we customize
+the inearist codes.  n a run time test which involved a fforf
+with 100,000 stack add and delete operations, the code of
+stackclass took 42 more time than did the customized code
+of custom.  his improvement in performance has however also
+come at some cost.
+.
+.nf
+.hl
+.ft 
+templateclass type
+class tack : protected inearist type 
+public:
+   tackint axtackize  10
+        : inearisttype axtackize 
+   int smpty return inearisttype::smpty;
+   int sull return length  axize;
+   int optype x;
+   int operator type x;  add x to stack
+   int operator type x;  delete x from stack
+;
+templateclass type
+int tacktype::optype x
+
+if smpty return 0; op fails
+x  elementlength  1;
+return 1; op succeeds
+
+templateclass type
+int tacktype::operatortype x
+add x to stack
+if sull return 0; add fails
+elementlength  x;
+return 1; add succeeds
+
+templateclass type
+int tacktype::operatortype x
+delete top element and return in x
+if smpty return 0; delete fails
+x  elementlength;
+return 1; delete succeeds
+
+.hl
+fcustom:f ustomized version of tack
+.ft 
+.fi
+.
+ince the code of custom accesses the nonpublic
+members of the class inearist it is prone to failure when changes are
+made to inearist as these changes are required only to
+preserve the integrity of the public members.  his problem can be
+overcome by extending the class inearist rogram 2.1
+to include public members to add and delete atfrom the
+right end of the list.
+nother problem is that the code of
+custom is somewhat more involved than that of stackclass.
+o,
+it is expected to take longer to debug.
+.pp
+his illustrates some of the
+tradeoffs involved between software reuse and program efficiency.
+nterestingly, if we develop the code for the class tack afresh
+i.e., tack is not derived from inearist as in custom,
+and perform the run time experiment described above, the new code runs
+13 faster than the customized code of custom 
+ith improvement in compiler technology, one may expect this difference in
+performance to diminish.
+.
+.
+.
+.
+.ip a
+btain the code for the  class tack without making use of the
+class inearist.  .e., start afresh and use an array stack
+to store the elements, an integer variable top that points to the
+top element in the stack initialized to  1, and an integer
+variable axize that gives the largest number of elements the
+stack can hold.
+.ip b
+rite a program to measure the run time of an alternating sequence of
+n stack add and delete operations.  easure the times needed
+by rograms pstackclass, pcustom, and your code of part a.
+.ip c
+hat can you say about the meritsdemerits of the different software
+development styles used
+.
+.
+xtend the stack  by adding functions to:
+.
+.ip a
+etermine the size i.e., number of elements of the stack.
+.ip b
+nput a stack.
+.ip c
+rint a stack.
+.
+ow extend the class definition of a formulabased stack to include
+code for these functions.
+.
+xtend the stack  by adding functions to:
+.
+.ip a
+plit a stack into two.  he first contains the bottom half elements and the second the remaining elements.
+.ip b
+ombine two stacks into one by placing all elements of the second stack
+on top of those in the first.  he relative order of elements from the
+second stack is unchanged.
+.
+ow extend the class definition of a formulabased stack to include
+code for these functions.
+.
+.oh inked epresentation
+. 2
+ 
+.
+.sp
+hile the array representation of a stack considered in the previous
+section is both elegant and efficient, it is wasteful
+of space when multiple stacks are to coexist.  he reasons are the same as
+those cited in hapter 2 for the inefficiency of the separate arrays
+for separate lists
+representation.  n exception is
+when only two stacks are to coexist.  ow, space and time efficiency can be
+maintained
+by pegging the bottom of one stack at position 0
+and the bottom of the other at position axize  1.  he two stacks
+grow towards the middle of the array see twostacks.  hen more than
+two stacks are to be represented,
+the multiple lists in a single array representation may be adapted
+to the case of multiple stacks.  hile this results in a
+space efficient implementation,
+the worst case add time becomes
+rrayize rather than 1.  he delete time remains 1.
+.
+.hl
+.
+h  .5i; w  .3i;
+:boxht  h; boxwid  w
+: box shade 5
+: box shade 5
+: box shade 5
+: box shade 5
+
+boxwid  5w; box ...; boxwid  w
+:: box shade 30;
+: box shade 30
+: box shade 30
+: box shade 30
+
+y  .1
+arrow from ..t0,.4 to ..t
+arrow from ..t0,.4 to ..t
+ftopf1 at ..t0,.4y
+ftopf2 at ..t0,.4y
+0 at ..t0,.2
+rrayize  1 at ..t0,.2
+ 1 at .b0,.2
+ 2 at .b0,.2
+arrow right .5i from ..e
+arrow left .5i from ..w
+.
+.hl
+ftwostacks:f  wo stacks in an array
+.
+.pp
+ultiple stacks can be represented efficiently using a chain for each
+stack.
+his representation incurs a space penalty of one pointer field for each
+stack element.  owever, each stack operation can be performed in
+1 time.
+hen using a chain to represent a stack, we must decide which end
+of the chain corresponds to the stack top.  f we associate the right
+end of the chain with the stack top, then stack additions
+and deletions are implemented using the
+chain operations nsertn, x
+and eleten,x where n is the number of nodes in
+the chain.  ach of these chain operations takes n time.
+n the other hand, if we associate the left end of the chain with
+the stack top, then the chain operations to use are
+nsert0, x and elete1,x.  ach of these takes 1
+time.  s a result of this, the left end of the chain represents the
+stack top.  he resulting class definition of a linked stack
+is given in lstackclass.
+.
+.hl
+.nf
+.ft 
+templateclass type
+class inkedtack : protected haintype 
+public:
+   int smpty return haintype::smpty;
+   int sull;
+   int optype x return ind1, x;
+   int operator type x return nsert0, x;
+   int operator type x return elete1, x;
+;
+
+templateclass type
+int inkedtacktype::sull
+
+hainodetype i;
+i  new hainodetype;
+if i delete i; return 0;;
+return 1;
+
+.ft 
+.fi
+.hl
+flstackclass:f lass definition for a linked stack
+.
+.pp
+he implementation of sull is inelegant as the only way to know
+whether or not we can add an element to a stack is to see if enough
+space exists to create a node of type ode.  his is done by
+invoking fnewf and then deleting the created node as we do not
+intend to use it.
+s in the case of the class tack stackclass, we can improve the
+run time performance by customizing the code.  he customized code
+is given in clstack.
+.
+.hl
+.nf
+.ft 
+templateclass type
+class inkedtack : protected haintype
+
+public:
+   int smpty return first  0;
+   int sull;
+   int optype x;
+   int operator type x;
+   int operator type x;
+;
+
+templateclass type
+int inkedtacktype::sull
+
+hainodetype i;
+i  new hainodetype;
+if i delete i; return 0;
+return 1;
+
+
+templateclass type
+int inkedtacktype::optype x
+set x to top element
+if smpty return 0; op fails
+x  firstdata;
+return 1; op succeeds
+
+.ft 
+.fi
+.hl
+fclstack:f ustomized linked stack
+continued on next page
+.
+.
+.hl
+.nf
+.ft 
+templateclass type
+int inkedtacktype::operatortype x
+add x to stack
+hainodetype i;
+i  new hainodetype;
+if i idata  x; ilink  first;
+        first  i; return 1;
+return 0;  add fails 
+
+
+templateclass type
+int inkedtacktype::operatortype x
+delete top element and return in x
+if smpty return 0; delete fails
+x  firstdata;
+hainodetype i  first;
+first  firstlink;
+delete i;
+return 1;
+
+.ft 
+.fi
+.hl
+fclstack:f ustomized linked stack
+continued from previous page
+.
+.pp
+he code of lstackclass took 21 more time to execute
+a fforf loop of 100,000 add and delete
+operations than did the customized code of clstack.
+.
+.
+.
+.
+.ip a
+btain the code for the  class inkedtack without making use of the
+class hain.
+.ip b
+rite a program to measure the run time of an alternating sequence of
+n stack add and delete operations.  easure the times needed
+by rograms plstackclass, pclstack, and your code of part a.
+.
+.
+xtend the class inkedtack to include the following stack operations:
+.
+.ip a
+etermine the size i.e., number of elements of the stack.
+.ip b
+nput a stack.
+.ip c
+rint a stack.
+.
+.
+xtend the class inkedtack to include the following operations:
+.
+.ip a
+plit a stack into two.  he first contains the bottom half elements and the second the remaining elements.
+.ip b
+ombine two stacks into one by placing all elements of the second stack
+on top of those in the first.  he relative order of elements from the
+second stack is unchanged.
+.
+.
+.oh pplications
+. 2
+
+. 3
+arenthesis atching
+.
+.sp
+n this problem, we are to match the left and right parentheses in a
+character string.  or example, the string abcd has left parentheses
+at positions one and four and right parentheses at positions eight and eleven.
+he left parenthesis at position one matches the right at position eleven
+while the left parenthesis at four matches the right parenthesis at eight.
+n the string ab, the right parenthesis at six has no matching
+left parenthesis and the left parenthesis at seven has no matching
+right parenthesis.  ur objective is to write a  program that inputs
+a string and outputs the pairs of matched parentheses as well as those
+parentheses for which there is no match.
+.pp
+e observe that if we scan the input string lefttoright then each right
+parenthesis is matched to the most recently seen unmatched left parenthesis.
+his motivates us to save the position of
+left parentheses on a stack as they are encountered
+in a lefttoright scan.  hen a right parenthesis is encountered,
+it is matched to the left parenthesis if any at the top of the stack.
+he matched left parenthesis is deleted from the stack.  he complete 
+program is given in paren.   sample input  output dialogue is given
+in paren.  he time complexity of paren is n, where
+n is the length of the input string.
+.
+.hl
+.nf
+.ft 
+include iostream.h
+include string.h
+include stdio.h
+include stack.h
+const int axength  100; max expression length
+void rintatchedairschar expr;
+void mainvoid
+
+char expraxength;
+cout  ype an expression of length at most 
+      axength  endl;
+cin.getlineexpr, axength;
+cout  he pairs of matching parentheses in the expression  endl;
+putsexpr;
+cout  are  endl;
+rintatchedairsexpr;
+
+
+void rintatchedairschar expr
+
+tackint saxength;
+int j, length  strlenexpr;
+for int i  1; i  length; i 
+   if expri  1   s  i;
+   else if expri  1  
+	if s  j cout  j     i  endl;
+      else cout  o match for right parenthesis at 
+                 i  endl;
+   
+while s.smpty 
+   s  j;
+   cout  o match for left parenthesis at   j 
+         endl;
+
+.fi
+.hl
+fparen:f rogram to output matched parentheses
+.
+.
+.hl
+.nf
+ype an expression of length at most 100
+dabcdef
+he pairs of matching parentheses in the expression
+dabcdef
+are
+4 8
+12 16
+1 19
+o match for right parenthesis at 20
+22 23
+o match for left parenthesis at 21
+.fi
+.hl
+fparen:f ample run of parenthesis matching program
+.
+. 3 
+owers of anoi
+.
+.sp
+he owers of anoi problem
+is fashioned after the ancient ower of rahma
+ritual.  ccording to legend, at the time the world was created there
+was a diamond tower tower 1 with sixty four golden disks.  he disks were
+of decreasing size and were stacked on the tower in decreasing
+order of size bottom to top.
+esides this tower there are two other diamond towers towers 2 and 3.
+ince the time of creation,
+rahman priests have been attempting to move the disks from
+tower 1 to tower 2 using tower 3 for intermediate storage.
+s the disks are very heavy, they can be moved only one at a time.
+n addition, at no time can a disk be on top of a smaller disk.
+ccording to legend, the world will come to an end when the
+priests have completed their task.
+.
+.hl
+.
+x  1.3i; d.9; e.5
+::line right x
+   :.c
+   line from  to 0,2
+   line from dx2,0 to dx2,.2
+   line from dx2,0 to dx2,.2
+   :line from dx2,.2 to dx2,.2
+   :.c
+   line from ddx2,0 to ddx2,.2
+   line from ddx2,0 to ddx2,.2
+   :line from ddx2,.2 to ddx2,.2
+   :.c
+   line from dddx2,0 to dddx2,.2
+   line from dddx2,0 to dddx2,.2
+   :line from dddx2,.2 to dddx2,.2
+   :.c0,1
+   line from ex2,0 to ex2,.2
+   line from ex2,0 to ex2,.2
+   line from ex2,0 to ex2,0
+   :line from ex2,.2 to ex2,.2
+ower 1 at last .s0,.2
+::line right x
+   :.c
+   line from  to 0,2 with .nw at .ne.3,0
+ower 2 at last .s0,.2
+::line right x
+   :.c
+   line from  to 0,2 with .nw at .ne.3,0
+ower 3 at last .s0,.2
+.
+.hl
+f14.2:f  owers of anoi
+.
+.pp
+n the fowers of anoif problemf, we are given n disks and three
+towers.  he disks are initially stacked on tower 1 in decreasing
+order of size bottomtotop.  hey are to be moved to tower 2, one disk
+atatime such that no disk is ever on top of a smaller one.
+ou may wish to attempt a solution to this problem for
+n  2, 3, and 4 before reading further.
+.pp
+ very elegant solution results from the use of recursion.
+o get the largest disk to the bottom
+of tower 2, we move the remaining n1 disks to tower 3 and then move
+the largest
+to tower 2.  ow, we are left with the task of moving the 
+n1 disks from tower 3 to
+tower 2.  o do this we have available the towers 1 and 2.  he fact that
+tower 2 has a disk on it can be ignored as this disk is larger
+that the disks being moved from tower 3 and so any disk can
+be placed on top of it.
+ecursive  code for this solution is provided in hanoi.
+he initial invocation is owersfanoin,1,2,3.
+he correctness of hanoi is easily established.
+.
+.nf
+.hl
+.ft 
+void owersfanoiint n, int x, int y, int z
+ove the top n disks from tower x to tower y
+se tower z for intermediate storage
+if n  0 
+   owersfanoin1, x, z, y;
+   cout  ove top disk from tower   x 
+          to top of tower   y  endl;
+   owersfanoin1, z, y, x;
+
+.ft 
+.hl
+fhanoi:f ecursive function for owers of anoi
+.fi
+.
+.pp
+et tn be the time taken by hanoi.  e see that
+tn is proportional to the number of lines of output
+generated.  his is equal to the number of disk moves performed.
+xamining hanoi, we obtain the following recurrence
+for the number of moves, movesn:
+.sp
+movesn left  lpile 0 above 2movesn11 lpile n0 above n0
+.sp
+his recurrence may be solved using the substitution method of
+hapter 1.  he result is movesn  2 sup n 1.  ne can show that
+this is, in fact, the least number of moves in which the disks can be moved. 
+ince n  60 in the ower of rahma,
+it will take the rahman priests quite a few years to finish their task.
+rom the solution to the above recurrence, we also obtain tn 
+2 sup n.
+.pp
+hile the output from hanoi is enough for us to manually move the
+disks, it isnt adequate if we wish to animate the move sequence
+on a computer display.  nother deficiency is that it doesnt explicitly
+specify the label of the disk that is to be moved.  o, if we make an error in
+following the move sequence output by hanoi, this error may not be detected till several moves later.  o rectify these deficiencies, we may store the state
+of the three towers in memory.  his state information is easily displayed
+on a computer screen for animation purposes and is also useful to output the
+label of the disk being moved.
+.pp
+ince disks are removed from each tower in a last in first out manner,
+each tower may be represented as a stack.  he three towers together contain
+exactly n disks at any time.  o, using linked stacks,
+we can get by with space for n elements.  f formulabased stacks are used,
+towers 1 and 2 must have a capacity of n disks each
+while tower 3 must have a capacity of n1.
+o, space for a total of 3n1 disks is needed.
+s our earlier analysis has shown, the complexity of the owers of anoi
+problem is exponential in n.  o, using a reasonable
+amount of computer time, the problem can be solved only for
+small values of n say n  30.  or these small values of n,
+the difference in space required by the formulabased and
+linked representations is sufficiently small that either may be used.
+.pp
+he code of hanoi2 uses formulabased stacks.
+owersfanoin is just a preprocessor for the recursive function
+anoi::owersfanoi which is modeled after the function of
+hanoi.  he preprocessor creates the three stacks 1:3
+that will store the states of the three towers.
+he disks are
+numbered 1 smallest through n largest.
+s a result, each stack is of type fintf.
+he preprocessor returns 0 in case enough space is not
+available to create these three stacks.
+hen enough space is available, it invokes anoi::owersfanoi
+and returns 1 after the necessary moves have been successfully output.
+.
+.nf
+.hl
+.ft 
+class anoi 
+public:
+   void owersfanoiint n, int x, int y, int z;
+   tackint 4;
+;
+
+void anoi::owersfanoiint n, int x, int y, int z
+ove the top n disks from tower x to tower y
+se tower z for intermediate storage
+int i;
+if n  0 
+   owersfanoin1, x, z, y;
+   x  i;  y  i;
+   cout  ove disk   i   from tower   x
+	  to tower   y  endl;
+   owersfanoin1, z, y, x;
+
+
+int owersfanoiint n
+preprocessor for anoi::owersfanoi
+anoi ;
+.1  new tackint n;
+.2  new tackint n;
+.3  new tackint n  1;
+if .2  .3 return 0;
+for int i  n; i  0; i initialize
+   .1  i; add disk i to tower 1
+.owersfanoin, 1, 2, 3;
+return 1;
+
+.ft 
+.hl
+fhanoi2:f owers of anoi using stacks
+.fi
+.
+. 3
+earranging ailroard ars
+.
+.sp
+ freight train has n railroard cars.  ach is to be
+left at a different station.  ssume that the n stations are numbered
+1 through n and that the freight train visits these in the
+order n through 1.   he railroad cars are labeled by their
+destination.  o facilitate removal of the railroad cars from the
+train it is necessary to reorder the cars so that they are
+in the order 1 through n fronttoback.  hen the cars are
+in this order, the last car is detached at each station.
+he rearrangement of cars is done at a shunting yard which is
+comprised of an finput trackf, an foutput trackf, and
+k holding tracks that lie between the input and output tracks.
+shunta shows a shunting yard with k  3 holding
+tracks 1, 2, and 3.
+he n cars of the freight train begin in the input track
+and are to end up in the output track in the order 1 through n
+righttoleft.
+n shunta, we have n  9 and the cars are initially in the
+order 5, 8, 1, 7, 4, 2, 9, 6, 3 backtofront.  shuntb
+shows the cars rearranged in the desired order.
+.
+.hl
+.
+boxwid  0.25i; boxht  boxwid;
+x  0.9i
+y  .25i
+h  0.5i
+:
+:ere
+line thick 10 from  to 2x2y,0
+line thick 10 from x,0 to x,h
+line thick 10 from xy,0 to xy,h
+line thick 10 from x2y,0 to x2y,h
+581742963 at x2,.2
+input track at x2,0.2
+output track at 32x2y,0.2
+1 at x,h0.2
+2 at xy,h0.2
+3 at x2y,h0.2
+
+a nitial at last .s0,.5
+:
+:ere
+line thick 10 from  to 2x2y,0
+line thick 10 from x,0 to x,h
+line thick 10 from xy,0 to xy,h
+line thick 10 from x2y,0 to x2y,h
+987654321 at 32x2y,.2
+1 at x,h0.2
+2 at xy,h0.2
+3 at x2y,h0.2
+ with .nw at .ne0.4,0
+b inal at last .s0,.5
+.
+.hl
+fshunt:f  three track example
+.
+.pp
+o rearrange the cars, we examine the cars on the input track
+fronttoback.  f the car being examined is the next
+one in the output arrangement, it is moved directly to the
+output track.  f not, it is moved to a holding track and left there
+until it is time to place it in the output.
+he holding tracks operate in a  manner as cars enter and leave
+these from the top of the track.
+hen rearranging cars, the following moves are permitted:
+.
+.np
+ car may be moved from the front i.e., right end
+of the input track to the top
+of one of the holding tracks or to the left end of the output track.
+.np
+ car may be moved from the top of a holding track to the left end of the output track.
+.
+.pp
+fll other moves are forbiddenf.
+onsider the input arrangement of shunta.  ar 3 is at the front.
+his cannot be output yet as it is to be preceded by cars 1 and 2.
+o, it is detached and moved to the holding track 1.
+he next car, car 6, is also to be moved to a holding track.
+f it is moved to 1, the rearrangement
+cannot be completed as car 3 will be below car 6.  owever,
+car 3 is to be output before car 6 and so must leave 1 before car 6
+does.
+o, car 6 is put into 2.
+he next car, car 9 is put into 3 as putting it into either 1
+or 2 will make it impossible to complete the rearrangement.
+fotice that whenever the car labels in a holding track are not
+in increasing order toptobottom, the rearrangement cannot be completedf.
+he current state of the holding tracks is shown in tracksa.
+.
+.hl
+.
+boxwid  0.25i; boxht  boxwid;
+d  .25i
+s  0.1i
+:
+:box shade 5
+box 3 at 
+:box shade 5 with .w at .ed,0
+box 6 at 
+:box shade 5 with .w at .ed,0
+box 9 at 
+1 at .s0,0.2
+2 at .s0,0.2
+3 at .s0,0.2
+
+a at last .s0,.5
+:
+:box shade 5
+box 3 at 
+:box shade 5 with .w at .ed,0
+box 6 at 
+:box shade 5 with .w at .ed,0
+box 9 at 
+: box shade 10 with .b at .t0,s
+2 at 
+: box shade 10 with .b at .t0,s
+4 at 
+: box shade 10 with .b at .t0,s
+7 at 
+1 at .s0,0.2
+2 at .s0,0.2
+3 at .s0,0.2
+ with .sw at .se1,0
+b at last .s0,.5
+.
+.hl
+ftracks:f rack states
+.
+.pp
+ar 2 is considered next.  hile it can be moved into any of the holding tracks
+while satisfying the requirement that car labels in any holding track be
+in increasing order, moving it to 1 is preferred.  f it is moved to
+3, then we have no place to move cars 7 and 8.  f we move it to 2,
+then the next car, car 4, will have to be moved to 3 and we will have
+no place for cars 5, 7, and 8.  fhe least restrictions on future
+car placement arises when the new car u is moved to the holding track
+which has at its top a car with smallest label v such that v  uf.
+e shall use this fassignment rulef to select the holding track.
+.pp
+hen car 4 is considered, the cars at the top of the three holding tracks
+are 2, 6, and 9.  sing our assignment rule, car 4 is moved to 2.
+ar 7 is then moved to 3.
+tracksb shows the current state of the holding tracks.
+he next car, car 1, is moved to the output track.
+t is now time to move car 2 from 1 to the output track.
+ext, car 3 is moved from 1 and then car 4 moved from 2.
+o other cars can be moved to the output at this time.
+.pp
+he next input car, car 8, is moved to 1.  hen car 5 is moved from
+the input track to the output track.  ollowing this, car 6 is moved from 2.
+hen car 7 is moved from 3, car 8 from 1, and car 9 from 3.
+.pp
+hile three holding tracks are sufficient to rearrange the cars from
+the initial ordering of shunta, more tracks are needed for other
+initial arrangements.  or example, the initial arrangement
+1, n, n1, ..., 2 requires n1 holding tracks.
+.pp
+o implement the above rearrangement scheme, we use k linked stacks
+to represent the k holding tracks.  inked stacks are used rather than
+formulabased ones as by doing so, the space required is that
+for only n1 elements.
+unction ailroard rail1 outputs a sequence of move that
+results in rearranging n cars with initial ordering p1:n.
+t attempts to do this using at most k holding tracks.  n case it fails
+for lack of tracks, it returns 0.  f failure is due to lack of memory,
+it returns 1.  n success, it returns 1.
+.
+.nf
+.hl
+.ft 
+int ailroadint p, int n, int k
+k track rearrangement of car order p1:n
+initialize holding tracks
+inkedtackint ;
+  new inkedtackint k  1;
+if  return 1;
+rearrange
+int owut  1, min  n1, min;
+for int i  1; i  n; i 
+   if pi  owut 
+      cout  ove car   pi 
+         from input to output  endl;
+      owut;
+      while min  owut 
+         utputmin, min, , k, n;
+	 owut;
+   else move to a holding track
+      int x  oldpi, min, min, , k, n;
+      if x  1 return x;
+   
+return 1;
+
+.ft 
+.hl
+frail1:f ailroad car rearrangement program
+.fi
+.
+.pp
+unction ailroad begins by initializing the linked stack array .
+i represents holding track i, 1ik.  owut is the label
+of the car that is to go to the output track next; min is the smallest
+label in any of the holding tracks, and min is the holding track
+or stack that contains the car with label min.
+he fforf loop maintains the invariant fat the start of this loop,
+the car with label owut is not in a holding trackf.
+.pp
+n iteration i of the fforf loop, car pi is moved from the
+input track.  his car is to move to the output track
+only if pi equals owut.  f car pi is moved to the output track,
+owut increases by one and it may be possible to move one or more of
+the cars in the holding tracks out.  his is done in the fwhilef
+loop.
+f car pi cannot be moved to the output, then no car can be so moved.
+onsequently, pi is added to a holding track using the stated
+track assignment rule.
+.pp
+he functions utput and old utilized by ailroad are given
+in rograms prail.o and prail.h respectively.
+utput outputs instructions to move a car from a holding track
+to the output track.  t also updates min and min.
+he function old puts car c into a holding track using the track
+assignment rule.  t also outputs instructions to move the car
+to the chosen holding track and updates min and min
+if necessary.
+.
+.nf
+.hl
+.ft 
+void utputint min, int min,
+        inkedtackint , int k, int n
+move from hold to output
+int x;
+min  x;
+cout  ove car   min   from holding track 
+      min   to output  endl;
+min  n  2;
+for int i  1; i  k; i
+   if i.opx  x  min 
+      min  x; min  i;
+
+.ft 
+.hl
+frail.o:f utput function used in rail1
+.fi
+.
+.
+.nf
+.hl

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DS10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dictionary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LZWCompress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LZWCompress3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LZWCompress2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LZWCompress2.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Concordance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Concordance2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortedArrayList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pairNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortedChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortedChain2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skipNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skipList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="idealHashDict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sortedChainWithTail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTimePerf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashChainsWithTails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashChainsWithTail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChainedHashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashChainsWithHeadersAndTail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashChainsWithVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestHashChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LZWCompress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LZWCompress3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Concordance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Concordance2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

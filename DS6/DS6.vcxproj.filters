@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ConvexHull">
+      <UniqueIdentifier>{409e8f80-f2d5-408d-82cc-0589a9e30ee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ConvexHull">
+      <UniqueIdentifier>{7425ff5c-1b58-4285-bc36-ef8883da1c89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BigInteger">
+      <UniqueIdentifier>{b9126b1c-fb9c-4827-9932-e80ce8938fe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BigInteger">
+      <UniqueIdentifier>{c968a0d1-10e7-4ff1-8f9d-96467c8c127d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Polynomial">
+      <UniqueIdentifier>{da491a0d-77b2-4cca-82ce-0bebc84f0eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Polynomial">
+      <UniqueIdentifier>{d676914e-1684-4a70-8398-bfd9c881956a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EquivalentClass">
+      <UniqueIdentifier>{ebde5636-44a4-48fb-a4a7-dac233c346b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EquivalentClass">
+      <UniqueIdentifier>{1eaa09e5-6f0b-424b-b7da-84551e91450f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DS6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="studentrecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\point.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\vectorpoints.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\chainpoints.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\doublecircularpoints.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\doublepoints.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull\moveleftandrightonchainpoints.cpp">
+      <Filter>Source Files\ConvexHull</Filter>
+    </ClCompile>
+    <ClCompile Include="BigInteger\BigIntegerInVector.cpp">
+      <Filter>Source Files\BigInteger</Filter>
+    </ClCompile>
+    <ClCompile Include="BigInteger\BigIntegerInDouble.cpp">
+      <Filter>Source Files\BigInteger</Filter>
+    </ClCompile>
+    <ClCompile Include="Polynomial\PolynomialInVector.cpp">
+      <Filter>Source Files\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="Polynomial\PolynomialInCircular.cpp">
+      <Filter>Source Files\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="EquivalentClass\EquivalentClassInList.cpp">
+      <Filter>Source Files\EquivalentClass</Filter>
+    </ClCompile>
+    <ClCompile Include="EquivalentClass\EquivalentClassInSimChain.cpp">
+      <Filter>Source Files\EquivalentClass</Filter>
+    </ClCompile>
+    <ClCompile Include="EquivalentClass\EquivalentClassInChain.cpp">
+      <Filter>Source Files\EquivalentClass</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="chain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="extendedchain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chainnode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="circular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="extendedcircular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="double.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="doublecircular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="extendeddoublecircular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="doublenode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentrecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\point.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\vectorpoints.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\chainpoints.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\doublecircularpoints.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\doublepoints.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="extendedouble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexHull\moveleftandrightonchainpoints.h">
+      <Filter>Header Files\ConvexHull</Filter>
+    </ClInclude>
+    <ClInclude Include="moveleftandrightonchain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BigInteger\BigIntegerInVector.h">
+      <Filter>Header Files\BigInteger</Filter>
+    </ClInclude>
+    <ClInclude Include="BigInteger\BigIntegerInDouble.h">
+      <Filter>Header Files\BigInteger</Filter>
+    </ClInclude>
+    <ClInclude Include="Polynomial\PolynomialInVector.h">
+      <Filter>Header Files\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="Polynomial\PolynomialInCircular.h">
+      <Filter>Header Files\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="EquivalentClass\EquivalentClassInList.h">
+      <Filter>Header Files\EquivalentClass</Filter>
+    </ClInclude>
+    <ClInclude Include="EquivalentClass\EquivalentClassInSimChain.h">
+      <Filter>Header Files\EquivalentClass</Filter>
+    </ClInclude>
+    <ClInclude Include="EquivalentClass\EquivalentClassInChain.h">
+      <Filter>Header Files\EquivalentClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
