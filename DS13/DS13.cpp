@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "CompleteWinnerTree.h"
-#include "DS13_Applications.h"
+#include "DS13_Application.h"
 #include "FullWinnerTree.h"
 #include "CompleteWinnerTree2.h"
 #include "CompleteWinnerTree3.h"

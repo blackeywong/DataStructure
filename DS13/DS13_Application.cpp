@@ -1,6 +1,6 @@
 #include<algorithm>
 
-#include "DS13_Applications.h"
+#include "DS13_Application.h"
 #include "CompleteWinnerTree.h"
 
 void firstFitPack(int* objectSize, int numberOfObjects, int binCapacity) {

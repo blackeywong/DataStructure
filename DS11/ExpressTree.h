@@ -68,9 +68,9 @@ double ExpressTree<T>::calExprTree(BinaryTreeNode<T>* node) {
 template<class T>
 ExpressTree<T>::ExpressTree(const std::string& expr, TRAVERSE_ORDER order) {
     switch (order) {
-    case POSTFIX: createTreeWithPostExpr(expr); break;
-    case PREFIX: createTreeWithPreExpr(expr); break;
-    case INFIX: createTreeWithInExprParen(expr); break;
+    case TRAVERSE_ORDER::POSTFIX: createTreeWithPostExpr(expr); break;
+    case TRAVERSE_ORDER::PREFIX: createTreeWithPreExpr(expr); break;
+    case TRAVERSE_ORDER::INFIX: createTreeWithInExprParen(expr); break;
     }
 }
 

@@ -18,12 +18,36 @@
     <ClCompile Include="DS14.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DS14_Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BSTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedBSTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DS14_Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DupBinarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedBinarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DupIndexedBinarySearchTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DupBinarySearchTreeWithGE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearListAsBinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

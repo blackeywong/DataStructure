@@ -94,7 +94,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\study\C++\DS\DS11\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>drawing.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -149,10 +150,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DS14.cpp" />
+    <ClCompile Include="DS14_Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BSTree.h" />
+    <ClInclude Include="DS14_Application.h" />
+    <ClInclude Include="DupBinarySearchTree.h" />
+    <ClInclude Include="DupBinarySearchTreeWithGE.h" />
+    <ClInclude Include="DupIndexedBinarySearchTree.h" />
+    <ClInclude Include="IndexedBinarySearchTree.h" />
+    <ClInclude Include="IndexedBSTree.h" />
+    <ClInclude Include="LinearListAsBinaryTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

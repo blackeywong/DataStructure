@@ -140,10 +140,10 @@ std::istream& ChainBinaryTree<T>::input(std::istream& in) {
 template<class T>
 std::ostream& ChainBinaryTree<T>::output(std::ostream& out, TRAVERSE_ORDER order) const {
 	switch (order) {
-	case PREFIX: preOrder(root, out); break;
-	case INFIX: inOrder(root, out); break;
-	case POSTFIX: postOrder(root, out); break;
-	case LEVEL: levelOrder(out); break;
+	case TRAVERSE_ORDER::PREFIX: preOrder(root, out); break;
+	case TRAVERSE_ORDER::INFIX: inOrder(root, out); break;
+	case TRAVERSE_ORDER::POSTFIX: postOrder(root, out); break;
+	case TRAVERSE_ORDER::LEVEL: levelOrder(out); break;
 	}
 	return out;
 }

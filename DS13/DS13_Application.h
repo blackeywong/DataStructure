@@ -16,11 +16,11 @@ void winnerTreeSort(T* thePlayer, int theNumberOfPlayers) {
 	CompleteWinnerTree<T> cwt(thePlayer, theNumberOfPlayers);
 
 	for (int i = 1; i <= theNumberOfPlayers; ++i) {
-		std::cout << cwt.winner() << ' ';
+		//std::cout << cwt.winner() << ' ';
 		thePlayer[cwt.winnerNum()] = INT_MAX;
 		cwt.rePlay(cwt.winnerNum());
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 }
 
 //Exercise 22

@@ -47,7 +47,7 @@ public:
 	int Height() const { return Height(root); }
 
 	std::istream& input(std::istream& in);
-	std::ostream& output(std::ostream& out, TRAVERSE_ORDER order = INFIX);
+	std::ostream& output(std::ostream& out, TRAVERSE_ORDER order = TRAVERSE_ORDER::INFIX);
 
 	explicit LinkedBinaryTree(const LinkedBinaryTree<E>& right) { root = copySubtreePreOrder(right.root); }//Exercise 44
 	bool compare(const LinkedBinaryTree<E>& right) { return compare(root, right.root); }//Exercise 45
@@ -286,10 +286,10 @@ template<class E>
 std::ostream& LinkedBinaryTree<E>::output(std::ostream& out, TRAVERSE_ORDER order) {
 	auto func = [&out](BinaryTreeNode<E>* t) {out << t->element << " "; };
 	switch (order) {
-	case PREFIX: preOrder(func); break;
-	case INFIX: inOrder(func); break;
-	case POSTFIX: postOrder(func); break;
-	case LEVEL: levelOrder(func); break;
+	case TRAVERSE_ORDER::PREFIX: preOrder(func); break;
+	case TRAVERSE_ORDER::INFIX: inOrder(func); break;
+	case TRAVERSE_ORDER::POSTFIX: postOrder(func); break;
+	case TRAVERSE_ORDER::LEVEL: levelOrder(func); break;
 	}
 	return out;
 }

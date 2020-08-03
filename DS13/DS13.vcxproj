@@ -163,7 +163,7 @@
     <ClInclude Include="CompleteWinnerTree4.h" />
     <ClInclude Include="FullLoserTree.h" />
     <ClInclude Include="FullWinnerTree.h" />
-    <ClInclude Include="DS13_Applications.h" />
+    <ClInclude Include="DS13_Application.h" />
     <ClInclude Include="WinnerTree.h" />
   </ItemGroup>
   <ItemGroup>

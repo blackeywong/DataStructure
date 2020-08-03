@@ -88,8 +88,10 @@ const T& Heap<T>::top()
 template<class T>
 void Heap<T>::pop()
 {
-	if (heapSize == 0)
-		throw std::out_of_range("emtpy heap");
+	if (heapSize == 0) {
+		//throw std::out_of_range("emtpy heap");
+		return;
+	}
 
 	heap[1].~T();
 

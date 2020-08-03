@@ -9,7 +9,7 @@
 class Expression : public LinkedBinaryTree<std::string> {
 public:
     Expression() :LinkedBinaryTree<std::string>() {}
-    explicit Expression(const std::string& expr, TRAVERSE_ORDER order = INFIX);//Exercise 52.3 52.4 52.5
+    explicit Expression(const std::string& expr, TRAVERSE_ORDER order = TRAVERSE_ORDER::INFIX);//Exercise 52.3 52.4 52.5
     double calValue();//Exercise 52.6
 
     std::string toParenInOrder() { return toParenInOrderRecursive(this->root); }//Exercise 52.1

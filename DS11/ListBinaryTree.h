@@ -11,6 +11,7 @@
 template<class T>
 class ListBinaryTree {
 public:
+	ListBinaryTree() :list(nullptr), height(0), last(0) {}
 	explicit ListBinaryTree(int theHeight);
 	~ListBinaryTree() { delete[]list; list = nullptr; }
 	explicit ListBinaryTree(const ListBinaryTree<T>& right);//Exercise 24
@@ -65,10 +66,10 @@ std::istream& ListBinaryTree<T>::input(std::istream& in) {
 template<class T>
 std::ostream& ListBinaryTree<T>::output(std::ostream& out, TRAVERSE_ORDER order) const{
 	switch (order) {
-	case PREFIX: preOrder(1, out); break;
-	case INFIX: inOrder(1, out); break;
-	case POSTFIX: postOrder(1, out); break;
-	case LEVEL: levelOrder(out); break;
+	case TRAVERSE_ORDER::PREFIX: preOrder(1, out); break;
+	case TRAVERSE_ORDER::INFIX: inOrder(1, out); break;
+	case TRAVERSE_ORDER::POSTFIX: postOrder(1, out); break;
+	case TRAVERSE_ORDER::LEVEL: levelOrder(out); break;
 	}
 	return out;
 }
