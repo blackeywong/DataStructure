@@ -89,8 +89,15 @@ void LinearListAsBinaryTree<K, E>::erase(const K& theKey)
 			i = j;
 		}
 		else {
-			list[i].element = list[i * 2 + 1].element;
-			i = i * 2 + 1;
+			//find the min in right tree
+			int j = i * 2 + 1;
+			while (j < capacity && list[j].hasValue) {
+				j = j * 2;
+			}
+			j = j / 2;
+			//move max from j to i
+			list[i].element = list[j].element;
+			i = j;
 		}
 	}
 	list[i].hasValue = false;
